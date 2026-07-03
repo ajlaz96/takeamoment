@@ -9,8 +9,8 @@ const prompts = [
         subtitle: "On a scale of 1–10, rate your overall mood. What might be contributing to your rating?"
     },
     {
-        title: "Reflecting on the day",
-        subtitle: "What brought me the most joy today? What brought me the most stress today?"
+        title: "Reflections",
+        subtitle: "What's bringing you joy? What's bringing you stress?"
     },
     {
         title: "What am I carrying today?",
@@ -22,7 +22,7 @@ const prompts = [
     },
     {
         title: "One thing I'm grateful for",
-        subtitle: "Name something small and specific."
+        subtitle: "Something specific, big or small."
     }
 ];
 
