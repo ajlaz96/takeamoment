@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light only">
+    <title>take a moment 🪷</title>
+
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="page">
+      
+        <section id="journal-card" class="journal-card">
+
+            <div class="top-row">
+                <div class="date">
+                    Date
+                    <span class="date-field" contenteditable="true"></span>
+                    /
+                    <span class="date-field" contenteditable="true"></span>
+                    /
+                    <span class="date-field" contenteditable="true"></span>
+                </div>
+
+                <div class="days">
+                    <button class="day" type="button">M</button>
+                    <button class="day" type="button">T</button>
+                    <button class="day" type="button">W</button>
+                    <button class="day" type="button">T</button>
+                    <button class="day" type="button">F</button>
+                    <button class="day" type="button">S</button>
+                    <button class="day" type="button">S</button>
+                </div>
+            </div>
+
+            <div class="prompt-box">
+
+                <h1 id="prompt-title"></h1>
+
+                <p id="prompt-subtitle"></p>
+
+                <div id="response" class="response" contenteditable="true"></div>
+
+                <div id="drawing-wrap" class="drawing-wrap">
+    <canvas id="drawing-canvas" class="drawing-canvas"></canvas>
+
+    <div id="drawing-actions" class="drawing-actions">
+        <button id="undo-drawing" type="button">Undo</button>
+        <button id="clear-drawing" type="button">Clear</button>
+    </div>
+</div>
+            </div>
+
+        </section>
+
+<div class="bottom-bar">
+
+    <div class="affirmation-mobile-row">
+        <button id="affirmation-button" class="affirmation-button" type="button">
+            <img src="affirmation-icon-rotated.png" alt="Click for an affirmation">
+        </button>
+
+        <p id="affirmation-text" class="affirmation-text"></p>
+    </div>
+
+    <div class="toolbar">
+        <button id="new-prompt">↻ New prompt</button>
+        <button id="download">↓ Download</button>
+    </div>
+
+</div>
+
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,357 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600&family=Inter:wght@400;500&display=swap');
+
+:root{
+    --paper:#fffcf7;
+    --ink:#2b2b2b;
+    --line:#c8c8c8;
+    --card-border: #92c0f6;
+    --button-border: #f0a3de;
+    --subtext:#6f6f6f;
+    --journal-width:700px;
+    color-scheme:light;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+html,
+body{
+    margin:0;
+    min-height:100%;
+}
+
+body{
+    background:#fffcf7;
+    color:var(--ink);
+    font-family:Inter,sans-serif;
+}
+
+.page{
+    min-height:100vh;
+    padding:40px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+}
+
+.journal-card{
+    width:min(var(--journal-width),100%);
+    min-height:360px;
+    background:var(--paper);
+    padding:clamp(20px,4vh,42px);
+    border-radius:24px;
+    border:1px solid var(--card-border);
+    display:flex;
+    flex-direction:column;
+}
+
+.top-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:16px;
+    margin-bottom:clamp(12px,2vh,22px);
+    font-family:"Cormorant Garamond",serif;
+    font-style:italic;
+    font-size:18px;
+    flex-shrink:0;
+}
+
+.date{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    white-space:nowrap;
+}
+
+.date-field{
+    display:inline-block;
+    width:22px;
+    min-height:22px;
+    text-align:center;
+    outline:none;
+}
+
+.days{
+    display:flex;
+    gap:10px;
+    align-items:center;
+    flex-shrink:0;
+}
+
+.day{
+    width:26px;
+    height:26px;
+    padding:0;
+    border:1px solid transparent;
+    border-radius:50%;
+    background:transparent;
+    font-family:"Cormorant Garamond",serif;
+    font-size:16px;
+    font-style:italic;
+    color:var(--ink);
+    cursor:pointer;
+}
+
+.day.selected{
+    border-color:var(--ink);
+}
+
+.day:hover{
+    border-color:var(--ink);
+    background:transparent;
+
+}
+
+.prompt-box{
+    display:flex;
+    flex-direction:column;
+    flex:1;
+    min-height:220px;
+}
+
+h1{
+    margin:0 0 10px;
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(30px,5vw,46px);
+    font-style:italic;
+    line-height:1.05;
+    flex-shrink:0;
+}
+
+p{
+    margin:0 0 clamp(16px,3vh,28px);
+    font-size:16px;
+    line-height:1.5;
+    flex-shrink:0;
+}
+
+.response{
+    width:100%;
+    min-height:180px;
+    outline:none;
+    font-family:"Cormorant Garamond",serif;
+    font-size:26px;
+    font-style:italic;
+    line-height:1.5;
+    color:var(--ink);
+    white-space:pre-wrap;
+    overflow-wrap:break-word;
+}
+
+.response:empty::before{
+    content:"Start writing...";
+    color:rgba(47,42,37,.35);
+}
+
+.drawing-wrap{
+    display:none;
+    position:relative;
+    flex:1;
+}
+
+.drawing-canvas{
+    display:block;
+    width:100%;
+    min-height:360px;
+    border:1px solid var(--line);
+    border-radius:16px;
+    background-color:#fffcf7 !important;
+    forced-color-adjust:none;
+    color-scheme:light;
+    touch-action:none;
+}
+
+.drawing-actions{
+    position:absolute;
+    top:12px;
+    right:12px;
+    display:flex;
+    gap:8px;
+}
+
+.drawing-actions button{
+    padding:6px 10px;
+    font-size:13px;
+    border:1px solid var(--line);
+}
+
+.actions{
+    position:fixed;
+    top:16px;
+    right:16px;
+    z-index:10;
+    display:flex;
+    gap:10px;
+}
+
+button{
+    background:var(--paper);
+    border:1px solid var(--button-border);
+    border-radius:999px;
+    padding:10px 14px;
+    font-family:Inter,sans-serif;
+    color:var(--ink);
+    cursor:pointer;
+}
+
+button:hover{
+    background:#feeffc;
+}
+
+.affirmation-button:hover{
+    background:none;
+    border:none;
+}
+
+#prompt-subtitle{
+    color: var(--subtext);
+}
+
+.bottom-bar{
+    width:min(var(--journal-width),100%);
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    margin-top:18px;
+}
+
+.affirmation-button{
+    flex-shrink:0;
+    padding:0;
+    background:none;
+    border:none;
+    cursor:pointer;
+}
+
+.affirmation-button img{
+    width:44px;
+    height:44px;
+    display:block;
+}
+
+.affirmation-button:hover img{
+    content:url("affirmation-icon.png");
+}
+
+.affirmation-text{
+    flex:1;
+    margin:0;
+    font-family:Inter,sans-serif;
+    font-size:16px;
+    line-height:1.4;
+    color:var(--subtext);
+    text-align:left;
+}
+
+.affirmation-mobile-row{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    flex:1;
+}
+
+.toolbar{
+    display:flex;
+    flex-direction:row;
+    gap:10px;
+    flex-shrink:0;
+}
+
+@media(max-width:600px){
+
+    /* mobile-only CSS goes here */
+
+    .affirmation-text{
+    font-size:13px;
+    line-height:1.4;
+    font-style:italic;
+}
+
+    .page{
+        padding:35px 24px 0px;
+        gap:0px;
+        justify-content:flex-start;
+         min-height:100dvh;
+    }
+
+    .journal-card{
+        min-height:calc(100dvh - 300px);
+        padding:18px;
+    }
+
+    .top-row{
+        font-size:14px;
+        gap:10px;
+    }
+
+    .days{
+        gap:0px;
+    }
+
+    .day{
+        width:24px;
+        height:24px;
+        font-size:16px;
+    }
+
+    .date{
+    display:flex;
+    align-items:center;
+    gap:2px;
+    white-space:nowrap;
+    font-size:18px;
+    }
+
+    .prompt-box{
+    display:flex;
+    flex-direction:column;
+    flex:1;
+}
+
+    h1{
+        font-size:32px;
+    }
+
+    p{
+        font-size:14px;
+    }
+
+    .response{
+         min-height:360px;
+        font-size:22px;
+    }
+
+    .actions{
+        gap:10px;
+    }
+
+    button{
+        padding:12px 14px;
+        font-size:14px;
+    }
+
+
+    .bottom-bar{
+        flex-direction:column;
+        align-items:stretch;
+        gap:12px;
+    }
+
+    .affirmation-mobile-row{
+        display:flex;
+        align-items:center;
+        gap:0px;
+    }
+
+    .toolbar{
+        justify-content:center;
+        width:100%;
+    }
+    
+}
