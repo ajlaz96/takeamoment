@@ -247,6 +247,7 @@ button:hover{
     line-height:1.4;
     color:var(--subtext);
     text-align:left;
+    font-style:italic;
 }
 
 .affirmation-mobile-row{
